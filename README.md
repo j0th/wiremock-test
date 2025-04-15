@@ -1,7 +1,7 @@
 # wiremock-test
 
 1. Copy the wiremock-state-extension-standalone.jat to ./extensions
-2. Copy a PDF document to ./
+2. Copy a PDF document to ./Test.pdf
 
 ## curl commands
 
