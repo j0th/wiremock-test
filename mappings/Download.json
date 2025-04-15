@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathTemplate": "/download/{documentId}",
+    "customMatcher": {
+      "name": "state-matcher",
+      "parameters": {
+          "hasContext": "{{request.path.documentId}}"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": "{{state context=request.path.documentId property='blob' default=''}}",
+    "headers": {
+      "Content-Type": "{{state context=request.path.documentId property='contentType'}}"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPathTemplate": "/upload"
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "U-DocId": "{{randomValue type='UUID'}}",
+      "U-Size": "{{size request.body}}",
+      "U-ContentType": "{{request.headers.Content-Type}}"
+    }
+  },
+  "serveEventListeners": [
+    {
+      "name": "recordState",
+      "parameters": {
+        "context": "{{response.headers.U-DocId}}",
+        "state": {
+          "blob": "{{request.body}}",
+          "contentType": "{{request.headers.Content-Type}}"
+        }
+      }
+    }
+  ]
+}
+

@@ -1,0 +1,21 @@
+networks:
+  default:
+    name: "wiremock-test-nt"
+
+services:
+
+  wiremock:
+    image: "wiremock/wiremock:latest"
+    volumes:
+      - ./extensions:/var/wiremock/extensions
+      - ./__files:/home/wiremock/__files
+      - ./mappings:/home/wiremock/mappings
+    entrypoint: ["/docker-entrypoint.sh", "--global-response-templating", "--disable-gzip", "--verbose"]
+    ports:
+      - "8080:8080"
+    labels:
+      - "helic.network=${DOCKER_COMPOSE_IT_NETWORK_NAME}"
+      - "traefik.enable=true"
+      - "traefik.http.routers.wiremock-d3rest-legacy.rule=PathPrefix(`/wiremock-d3rest-legacy`)"
+      - "traefik.http.routers.wiremock-d3rest-legacy.entrypoints=web"
+
