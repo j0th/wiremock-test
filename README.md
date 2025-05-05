@@ -1,7 +1,7 @@
 # wiremock-test
 
 1. Copy the wiremock-state-extension-standalone.jat to ./extensions
-2. Copy a PDF document to ./Test.pdf. The PDF shoul have unprintable characters!
+2. Copy a PDF document to ./Test.pdf. The PDF should have unprintable characters!
 
 ## curl commands
 
